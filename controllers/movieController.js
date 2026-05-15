@@ -1,10 +1,14 @@
 const axios = require("axios")
 require("dotenv").config()
 
-
 const API_KEY = process.env.OMDB_API_KEY
 const BASE_URL = "http://www.omdbapi.com/"
 
+/**
+ * Handles the GET /api/search route.
+ * @param {*} req 
+ * @param {*} res 
+ */
 const searchMovies = async (req, res) => {
 
     try {
@@ -28,18 +32,19 @@ const searchMovies = async (req, res) => {
 
 }
 
-
+/**
+ * Handles the GET /api/movies/:id route
+ * @param {*} req 
+ * @param {*} res 
+ */
 const getMovieDetails = async (req, res) => {
 
-     try {
-         
-         const imdbID = req.params.id;
-         const url = `${BASE_URL}?apikey=${API_KEY}&i=${imdbID}`;
-         
-         
-         const response = await axios.get(url)
-         
-         console.log("Movies Details: ", response.data)
+    try {
+
+        const imdbID = req.params.id;
+        const url = `${BASE_URL}?apikey=${API_KEY}&i=${imdbID}`;
+
+        const response = await axios.get(url)
 
         if (response.data.Response === 'True') {
             res.json(response.data);

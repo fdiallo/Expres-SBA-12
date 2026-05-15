@@ -12,17 +12,10 @@ const movieRoutes = require("./routes/movieRoutes.js")
 // Middleware
 
 
-
-
 // Routes
 
 // Mount the router with the /api prefix
 app.use("/api", movieRoutes);
-
-
-
-
-
 
 
 // Port
